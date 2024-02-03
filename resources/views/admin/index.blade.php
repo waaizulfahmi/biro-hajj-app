@@ -20,9 +20,9 @@
                 class="btn btn-sm bg-gradient-primary font-weight-bold text-xs">
                 Tambah
               </a> --}}
-                                {{-- <a href="#" class="btn btn-sm bg-gradient-success font-weight-bold text-xs">
-                                    Export
-                                </a> --}}
+                                <a href="#" class="btn btn-sm bg-gradient-success font-weight-bold text-xs">
+                                    Tambah Data
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                                             </td>
                                             <td>
                                                 <p class="text-sm font-weight-bold mb-0">
-                                                    Lokasi</p>
+                                                    {{ $hajj->location }}</p>
                                             </td>
                                             <td>
                                                 <div class="d-flex align-items-center">
@@ -94,12 +94,13 @@
                                                     data-toggle="tooltip" data-original-title="Update" id="edit">
                                                     <i class="fa fa-pencil" aria-hidden="true"></i> Edit
                                                 </a>
-                                                <a href="javascript:;"
+                                                <a href="javascript:void(0);"
                                                     class="btn bg-gradient-danger font-weight-bold text-xs"
                                                     data-toggle="tooltip" data-original-title="Delete"
                                                     onclick="hapus({{ $hajj->id }})" id="hapus">
                                                     <i class="fa fa-trash" aria-hidden="true"></i> Hapus
                                                 </a>
+
                                             </td>
                                         </tr>
                                     @endforeach
@@ -119,5 +120,51 @@
         $(document).ready(function() {
             $('#membersTable').DataTable();
         });
+
+        function hapus(id) {
+            var deleteUrl = "{{ route('hajj.destroy', ':id') }}";
+            deleteUrl = deleteUrl.replace(':id', id);
+
+            Swal.fire({
+                title: 'Konfirmasi Hapus',
+                text: 'Apakah Anda Yakin akan Menghapus Data Ini ?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#234CA3',
+                confirmButtonText: 'Delete'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: deleteUrl,
+                        method: 'DELETE',
+                        data: {
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            Swal.fire({
+                                title: 'Deleted!',
+                                text: response.message,
+                                icon: 'success',
+                                confirmButtonColor: '#234CA3',
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                }
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            var response = JSON.parse(xhr.responseText);
+                            Swal.fire({
+                                title: 'Failed!',
+                                text: response.message,
+                                icon: 'error',
+                                confirmButtonColor: '#234CA3',
+                            });
+                        }
+                    });
+                }
+            });
+        }
     </script>
 @endsection

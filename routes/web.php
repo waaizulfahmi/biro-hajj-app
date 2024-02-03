@@ -34,13 +34,15 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::middleware(['auth:web'])->group(function () {
-    Route::controller(HajjController::class)->prefix('hajj')->name('hajj.')->group(function () {
-        Route::get('hajj', 'page')->name('page');
-        Route::get('edit/{id}', 'edit')->name('edit');
-
+    Route::prefix('hajj')->name('hajj.')->group(function () {
+        Route::get('page', [HajjController::class, 'page'])->name('page');
+        Route::get('edit/{id}', [HajjController::class, 'edit'])->name('edit');
+        Route::put('update/{id}', [HajjController::class, 'update'])->name('update');
+        Route::delete('destroy/{id}', [HajjController::class, 'destroy'])->name('destroy');
     });
-
 });
+
+
 
 // Route::get('/admin/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
 // Route::post('/admin/login', [AdminLoginController::class, 'login']);

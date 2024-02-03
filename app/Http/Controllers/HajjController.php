@@ -57,9 +57,47 @@ class HajjController extends Controller
      * @param  \App\cr  $cr
      * @return \Illuminate\Http\Response
      */
+    // public function edit($id)
+    // {
+    //     //
+    // }
+
     public function edit($id)
     {
-        //
+        $hajj = Hajj::find($id);
+
+        if (!$hajj) {
+            abort(404);
+        }
+
+        return view('admin.edit', compact('hajj'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $hajj = Hajj::find($id);
+
+        if (!$hajj) {
+            abort(404);
+        }
+
+        // Validasi form input sesuai kebutuhan
+        $request->validate([
+            'name' => 'required',
+            'location' => 'required',
+            'rating' => 'required|numeric|min:1|max:5',
+            // Sesuaikan dengan kolom-kolom lainnya
+        ]);
+
+        // Update data di dalam database
+        $hajj->update([
+            'name' => $request->input('name'),
+            'location' => $request->input('location'),
+            'rating' => $request->input('rating'),
+            // Sesuaikan dengan kolom-kolom lainnya
+        ]);
+
+        return redirect()->route('hajj.page')->with('success', 'Data berhasil diperbarui!');
     }
 
     /**
@@ -69,15 +107,15 @@ class HajjController extends Controller
      * @param  \App\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
-    {
-        //
-    }
+    // public function update(Request $request)
+    // {
+    //     //
+    // }
 
     public function page()
     {
         $hajjData = Hajj::all();
-        return view('index-admin', compact('hajjData'));
+        return view('admin.index', compact('hajjData'));
     }
 
     /**
@@ -86,8 +124,23 @@ class HajjController extends Controller
      * @param  \App\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    // public function destroy(cr $cr)
-    // {
-    //     //
-    // }
+    public function destroy($id)
+    {
+
+        $hajj = Hajj::find($id);
+        if (isset($hajj)) {
+            $hajj->delete();
+
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Berhasil menghapus data biro'
+            ]);
+        }
+        return response()->json([
+            'success' => false,
+            'message' => 'Gagal menghapus data biro'
+        ], 400);
+    }
+
 }

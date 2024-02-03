@@ -16,8 +16,10 @@ class CreateHajjsTable extends Migration
         Schema::create('tb_hajj', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->text('location');
+            $table->integer('rating');
             $table->longText('description');
-            $table->text('image');
+            $table->string('image');
             $table->timestamps();
         });
     }
