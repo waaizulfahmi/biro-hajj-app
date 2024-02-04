@@ -117,71 +117,84 @@
     <div id="search-and-filter"
         class="relative w-full px-8 py-10 border-t border-gray-200 md:py-16 lg:py-24 xl:py-40 xl:px-0">
         <div class="container flex flex-col items-center justify-between h-full max-w-6xl mx-auto">
-            <h2 class="my-5 text-base font-medium tracking-tight text-indigo-500 uppercase">Search and Filter</h2>
+            <h2 class="my-5 text-base font-medium tracking-tight text-indigo-500 uppercase">Search </h2>
 
             <!-- Search Bar -->
-            <div class="flex items-center justify-center w-full mb-8">
+            {{-- <div class="flex items-center justify-center w-full mb-8">
                 <input type="text" placeholder="Search..." class="w-full p-2 border border-gray-300 rounded-md">
                 <button class="ml-2 px-4 py-2 bg-indigo-500 text-white rounded-md">Search</button>
-            </div>
+            </div> --}}
 
             <!-- Filters -->
             <div class="flex items-center justify-between w-full mb-8">
-                <!-- Price Filter -->
-                <select class="p-2 border border-gray-300 rounded-md mr-2">
-                    <option value="">Filter Harga</option>
-                    <option value="filter2_option1">&lt; Rp. 20.000.000</option>
-                    <option value="filter2_option2">Rp. 20.000.000 - Rp. 30.000.000</option>
-                    <option value="filter3_option3">&gt; Rp. 30.000.000</option>
-                    <!-- Add more filter options as needed -->
+                <!-- Price -->
+                <input type="text" placeholder="Harga" class=" p-2 border border-gray-300 rounded-md mr-2">
+                <select class="p-2 border border-gray-300 rounded-md">
+                    <option value="">Currency</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="IDR">IDR</option>
+                    <!-- Add more currency options as needed -->
                 </select>
-
                 <!-- Rating Filter -->
-                <select class="p-2 border border-gray-300 rounded-md mr-2">
-                    <option value="">Filter Rating</option>
-                    <option value="filter_rating_1">1 Star</option>
-                    <option value="filter_rating_2">2 Stars</option>
-                    <option value="filter_rating_3">3 Stars</option>
-                    <option value="filter_rating_4">4 Stars</option>
-                    <option value="filter_rating_5">5 Stars</option>
-                    <!-- Add more rating options as needed -->
-                </select>
+                <input type="text" placeholder="Rating" class="p-2 border border-gray-300 rounded-md mr-2">
 
-                <!-- Duration Filter -->
-                <select class="p-2 border border-gray-300 rounded-md mr-2">
-                    <option value="">Filter Durasi Haji</option>
-                    <option value="filter_duration_1">Kurang dari 1 Minggu</option>
-                    <option value="filter_duration_2">1 Minggu - 2 Minggu</option>
-                    <option value="filter_duration_3">Lebih dari 2 Minggu</option>
-                    <!-- Add more duration options as needed -->
-                </select>
+                <!-- Duration -->
+                <input type="text" placeholder="Durasi Haji" class="p-2 border border-gray-300 rounded-md mr-2">
 
-                <!-- Location/Country Filter -->
-                <input type="text" placeholder="Filter Lokasi/Negara" class="p-2 border border-gray-300 rounded-md mr-2">
+                <input type="text" placeholder="Lokasi/Negara" class="p-2 border border-gray-300 rounded-md mr-2">
 
-                <!-- Add more filters as needed -->
-                <button class="px-4 py-2 bg-indigo-500 text-white rounded-md">Apply Filters</button>
+                <button class="px-4 py-2 bg-indigo-500 text-white rounded-md">Search</button>
             </div>
 
 
-            <!-- Displaying Data -->
-            <!-- Displaying Data -->
+
+
             <div class="flex flex-col w-full mt-0 lg:flex-row sm:mt-10 lg:mt-20">
                 <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     @foreach ($hajjData as $data)
-                        <div class="max-w-md p-4 mx-auto mb-8 flex-1">
+                        <div class="max-w-md p-4 mx-auto mb-8 flex-1" style="width: 250px; height: 400px;">
                             <!-- Umrah Travel Agency Card -->
                             <div class="bg-white rounded-lg shadow-lg overflow-hidden h-full">
-                                <img src="https://placehold.co/600x400" alt="Umrah Agency" class="w-full h-40 object-cover">
+                                <img src="{{ asset('storage/' . $data->image) }}" alt="{{ $data->name }}"
+                                    class="w-full h-40 object-cover">
                                 <div class="p-4">
                                     <h4 class="text-xl font-semibold mb-2">{{ $data->name }}</h4>
-                                    <p class="text-gray-900 mb-2  font-semibold ">
-                                        Rp. 18.000.000
+                                    <p class="text-gray-900 mb-2 font-semibold">
+                                        Rp. {{ $data->price }}
                                     </p>
                                     <p class="text-gray-600 mb-2">
                                         {{ implode(' ', array_slice(str_word_count($data->description, 2), 0, 10)) . (str_word_count($data->description, 2) > 10 ? '...' : '') }}
                                     </p>
-                                    <a href="#" class="text-indigo-500 underline">Baca Lainnya</a>
+                                    <a href="#" class="text-indigo-500 underline" data-toggle="modal"
+                                        data-target="#detailModal{{ $data->id }}">Lihat Detail</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="detailModal{{ $data->id }}" tabindex="-1" role="dialog"
+                            aria-labelledby="detailModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="detailModalLabel">{{ $data->name }} Details</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ asset('storage/' . $data->image) }}" alt="{{ $data->name }}"
+                                            class="w-full h-40 object-cover mb-3">
+                                        <p><strong>Location:</strong> {{ $data->location }}</p>
+                                        <p><strong>Rating:</strong> <span id="ratingStars{{ $data->id }}"></span></p>
+                                        <p><strong>Description:</strong> {{ $data->description }}</p>
+                                        <!-- Add more details as needed -->
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -192,8 +205,6 @@
 
         </div>
     </div>
-
-
 
     <div id="testimonials"
         class="flex items-center justify-center w-full px-8 py-10 border-t border-gray-200 md:py-16 lg:py-24 xl:py-40 xl:px-0">
@@ -316,4 +327,12 @@
 @endsection
 
 @section('scripts')
+    <script>
+        $(document).ready(function() {
+            $(".card-link").click(function() {
+                var modalId = $(this).data("target");
+                $(modalId).modal("show");
+            });
+        });
+    </script>
 @endsection

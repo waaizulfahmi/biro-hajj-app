@@ -17,6 +17,7 @@ class CreateHajjsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('location');
+            $table->integer('price');
             $table->integer('rating');
             $table->longText('description');
             $table->string('image');

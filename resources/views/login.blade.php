@@ -63,7 +63,6 @@
                             <p class="lead mb-6">
                                 Admin in Login Dashboard Admin
                             </p>
-                            <img src="{{ asset('assets/img/bp3tegal.png') }}" alt="BPPPTEGAL" width="600px">
                         </div>
                     </div>
                 </div>

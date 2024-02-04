@@ -26,7 +26,7 @@ class HajjController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create');
     }
 
     /**
@@ -37,7 +37,34 @@ class HajjController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the incoming request data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'price' => 'required|string|max:255',
+            'rating' => 'required|numeric',
+            'description' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        // Handle file upload
+        $imagePath = $request->file('image')->store('hajj_images', 'public');
+
+        // Create a new Hajj instance and fill it with the form data
+        $hajj = new Hajj([
+            'name' => $request->input('name'),
+            'location' => $request->input('location'),
+            'price' => $request->input('price'),
+            'rating' => $request->input('rating'),
+            'description' => $request->input('description'),
+            'image' => $imagePath,
+        ]);
+
+        // Save the instance to the database
+        $hajj->save();
+
+        // Redirect to a specific route or perform any other desired action
+        return redirect()->route('hajj.page')->with('success', 'Hajj data saved successfully!');
     }
 
     /**

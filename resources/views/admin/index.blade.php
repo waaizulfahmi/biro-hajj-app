@@ -20,7 +20,8 @@
                 class="btn btn-sm bg-gradient-primary font-weight-bold text-xs">
                 Tambah
               </a> --}}
-                                <a href="#" class="btn btn-sm bg-gradient-success font-weight-bold text-xs">
+                                <a href="{{ route('hajj.create') }}"
+                                    class="btn btn-sm bg-gradient-success font-weight-bold text-xs">
                                     Tambah Data
                                 </a>
                             </div>
@@ -36,6 +37,8 @@
                                         </th>
                                         <th class="text-uppercase text-secondary text-xs font-weight-bolder">
                                             Nama Biro</th>
+                                        <th class="text-uppercase text-secondary text-xs font-weight-bolder">
+                                            Harga</th>
                                         <th class="text-uppercase text-secondary text-xs font-weight-bolder">
                                             Lokasi
                                         </th>
@@ -54,6 +57,10 @@
                                             <td>
                                                 <p class="text-sm font-weight-bold mb-0">
                                                     {{ $hajj->name }}</p>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0">
+                                                    Rp. {{ $hajj->price }}</p>
                                             </td>
                                             <td>
                                                 <p class="text-sm font-weight-bold mb-0">
