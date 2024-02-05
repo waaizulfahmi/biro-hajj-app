@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Hajj;
+
 
 class AuthController extends Controller
 {
     public function login()
     {
         if (auth()->guard('web')->check())
+
+
             return redirect()->route('home');
         return view('login');
     }
@@ -45,8 +49,10 @@ class AuthController extends Controller
 
     public function home()
     {
+        $hajjCount = Hajj::count();
 
-        return view('home');
+
+        return view('home',  compact('hajjCount'));
     }
 
 }

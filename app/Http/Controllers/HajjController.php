@@ -142,8 +142,10 @@ class HajjController extends Controller
     public function page()
     {
         $hajjData = Hajj::all();
-        return view('admin.index', compact('hajjData'));
+        $hajjCount = Hajj::count();
+        return view('admin.index', compact('hajjData', 'hajjCount'));
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -168,6 +170,31 @@ class HajjController extends Controller
             'success' => false,
             'message' => 'Gagal menghapus data biro'
         ], 400);
+    }
+
+    public function search(Request $request)
+    {
+        $query = Hajj::query();
+
+        if ($request->filled('price')) {
+            $query->where('price', $request->price);
+        }
+
+        if ($request->filled('rating')) {
+            $query->where('rating', $request->rating);
+        }
+
+        if ($request->filled('duration')) {
+            $query->where('duration', $request->duration);
+        }
+
+        if ($request->filled('country')) {
+            $query->where('country', $request->country);
+        }
+
+        $results = $query->get();
+
+        return view('index', compact('results'));
     }
 
 }

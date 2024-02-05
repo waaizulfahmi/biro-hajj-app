@@ -112,8 +112,76 @@
         </div>
     </div>
     <!-- HERO SECTION END -->
+    <div class="relative w-full px-8 py-10 border-t border-gray-200 md:py-16 lg:py-24 xl:py-40 xl:px-0">
+        <div class="container mx-auto">
+            <h2 class="my-5 text-base font-medium tracking-tight text-indigo-500 uppercase text-center">Currency Converter
+            </h2>
+            <div class="flex flex-col items-center justify-center h-full mt-8">
+                <div class="flex items-center justify-between w-full mb-8">
 
-    <!-- BEGIN FEATURES SECTION -->
+
+                    <select id="fromCurrency" class="p-2 border border-gray-300 rounded-md">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="JPY">JPY</option>
+                        <option value="AUD">AUD</option>
+                        <option value="CAD">CAD</option>
+                        <option value="CHF">CHF</option>
+                        <option value="CNY">CNY</option>
+                        <option value="SEK">SEK</option>
+                        <option value="NZD">NZD</option>
+                        <option value="NOK">NOK</option>
+                        <option value="INR">INR</option>
+                        <option value="BRL">BRL</option>
+                        <option value="ZAR">ZAR</option>
+                        <option value="RUB">RUB</option>
+                        <option value="SGD">SGD</option>
+                        <option value="HKD">HKD</option>
+                        <option value="MXN">MXN</option>
+                        <option value="TRY">TRY</option>
+                        <option value="KRW">KRW</option>
+                        <option value="IDR" selected>IDR</option>
+                        <option value="MYR">MYR</option>
+                    </select>
+
+                    <input type="number" id="amount" placeholder="Amount"
+                        class="p-2 border border-gray-300 rounded-md mr-2" onchange="formatInputNumber()">
+
+                    <select id="toCurrency" class="p-2 border border-gray-300 rounded-md">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="JPY">JPY</option>
+                        <option value="AUD">AUD</option>
+                        <option value="CAD">CAD</option>
+                        <option value="CHF">CHF</option>
+                        <option value="CNY">CNY</option>
+                        <option value="SEK">SEK</option>
+                        <option value="NZD">NZD</option>
+                        <option value="NOK">NOK</option>
+                        <option value="INR">INR</option>
+                        <option value="BRL">BRL</option>
+                        <option value="ZAR">ZAR</option>
+                        <option value="RUB">RUB</option>
+                        <option value="SGD">SGD</option>
+                        <option value="HKD">HKD</option>
+                        <option value="MXN">MXN</option>
+                        <option value="TRY">TRY</option>
+                        <option value="KRW">KRW</option>
+                        <option value="IDR">IDR</option>
+                        <option value="MYR">MYR</option>
+
+                    </select>
+
+                    <button onclick="convertCurrency()" class="px-4 py-2 bg-indigo-500 text-white rounded-md"><i
+                            class="fas fa-exchange-alt mr-2"></i>Convert</button>
+
+                    <div id="result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="search-and-filter"
         class="relative w-full px-8 py-10 border-t border-gray-200 md:py-16 lg:py-24 xl:py-40 xl:px-0">
         <div class="container flex flex-col items-center justify-between h-full max-w-6xl mx-auto">
@@ -127,31 +195,30 @@
 
             <!-- Filters -->
             <div class="flex items-center justify-between w-full mb-8">
-                <!-- Price -->
-                <input type="text" placeholder="Harga" class=" p-2 border border-gray-300 rounded-md mr-2">
-                <select class="p-2 border border-gray-300 rounded-md">
-                    <option value="">Currency</option>
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="IDR">IDR</option>
-                    <!-- Add more currency options as needed -->
-                </select>
-                <!-- Rating Filter -->
-                <input type="text" placeholder="Rating" class="p-2 border border-gray-300 rounded-md mr-2">
+                <form action="{{ route('hajj.search') }}" method="GET">
+                    <!-- Price -->
+                    <input type="text" placeholder="Price" class=" p-2 border border-gray-300 rounded-md mr-2">
 
-                <!-- Duration -->
-                <input type="text" placeholder="Durasi Haji" class="p-2 border border-gray-300 rounded-md mr-2">
 
-                <input type="text" placeholder="Lokasi/Negara" class="p-2 border border-gray-300 rounded-md mr-2">
+                    <input type="text" placeholder="Rating" class="p-2 border border-gray-300 rounded-md mr-2">
 
-                <button class="px-4 py-2 bg-indigo-500 text-white rounded-md">Search</button>
+                    <input type="number" placeholder="Duration in Day"
+                        class="p-2 border border-gray-300 rounded-md mr-2">
+
+                    <input type="text" placeholder="Country" class="p-2 border border-gray-300 rounded-md mr-2">
+
+                    <button class="px-4 py-2 bg-indigo-500 text-white rounded-md">
+                        <i class="fas fa-search mr-2"></i>Search
+                    </button>
+                </form>
+
             </div>
 
 
 
 
             <div class="flex flex-col w-full mt-0 lg:flex-row sm:mt-10 lg:mt-20">
-                <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
                     @foreach ($hajjData as $data)
                         <div class="max-w-md p-4 mx-auto mb-8 flex-1" style="width: 250px; height: 400px;">
                             <!-- Umrah Travel Agency Card -->
@@ -187,7 +254,8 @@
                                         <img src="{{ asset('storage/' . $data->image) }}" alt="{{ $data->name }}"
                                             class="w-full h-40 object-cover mb-3">
                                         <p><strong>Location:</strong> {{ $data->location }}</p>
-                                        <p><strong>Rating:</strong> <span id="ratingStars{{ $data->id }}"></span></p>
+                                        <p><strong>Rating:</strong> <span id="ratingStars{{ $data->id }}"></span>
+                                        </p>
                                         <p><strong>Description:</strong> {{ $data->description }}</p>
                                         <!-- Add more details as needed -->
                                     </div>
@@ -280,13 +348,16 @@
                                         <path
                                             d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
                                     </svg>
-                                    <p class="mt-2 text-base text-gray-600">Extremely helpful in every single project we
+                                    <p class="mt-2 text-base text-gray-600">Extremely helpful in every single project
+                                        we
                                         have released.
                                     </p>
                                 </div>
 
-                                <h3 class="pl-12 mt-3 text-base font-medium leading-5 text-gray-800 truncate">Mike Smith
-                                    <span class="mt-1 text-sm leading-5 text-gray-500 truncate">- CEO SomeCompany</span>
+                                <h3 class="pl-12 mt-3 text-base font-medium leading-5 text-gray-800 truncate">Mike
+                                    Smith
+                                    <span class="mt-1 text-sm leading-5 text-gray-500 truncate">- CEO
+                                        SomeCompany</span>
                                 </h3>
                                 <p class="mt-1 text-sm leading-5 text-gray-500 truncate"></p>
                             </div>
@@ -334,5 +405,27 @@
                 $(modalId).modal("show");
             });
         });
+
+        function convertCurrency() {
+            const fromCurrency = document.getElementById('fromCurrency').value;
+            const toCurrency = document.getElementById('toCurrency').value;
+            const amount = document.getElementById('amount').value;
+
+            fetch(`https://open.er-api.com/v6/latest/${fromCurrency}`)
+                .then(response => response.json())
+                .then(data => {
+                    const rate = data.rates[toCurrency];
+                    const convertedAmount = amount * rate;
+
+                    document.getElementById('result').innerText =
+                        `${amount} ${fromCurrency} = ${convertedAmount.toFixed(2)} ${toCurrency}`;
+                })
+                .catch(error => console.error('Error fetching currency conversion rates:', error));
+        }
+
+        function formatInputNumber() {
+            var amountInput = document.getElementById("amount");
+            amountInput.value = formatNumberWithCommas(parseFloat(amountInput.value.replace(/,/g, '')));
+        }
     </script>
 @endsection

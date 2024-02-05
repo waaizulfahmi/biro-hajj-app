@@ -38,6 +38,7 @@ Route::middleware(['auth:web'])->group(function () {
         Route::get('page', [HajjController::class, 'page'])->name('page');
         Route::get('edit/{id}', [HajjController::class, 'edit'])->name('edit');
         Route::get('create', [HajjController::class, 'create'])->name('create');
+        Route::get('search', [HajjController::class, 'search'])->name('search');
         Route::post('store', [HajjController::class, 'store'])->name('store');
         Route::put('update/{id}', [HajjController::class, 'update'])->name('update');
         Route::delete('destroy/{id}', [HajjController::class, 'destroy'])->name('destroy');

@@ -14,88 +14,23 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Pendaftaran Hari ini</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Hajj Agency Data Totals</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        {{-- {{ $membersToday }} --}}
+                                        {{ $hajjCount }}
                                     </h5>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-info shadow text-center border-radius-md">
-                                    <i class="ni ni-single-02 text-lg opacity-10" aria-hidden="true"></i>
+                                    <i class="fas fa-kaaba"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Pendaftaran</p>
-                                    <h5 class="font-weight-bolder mb-0">
-                                        {{-- {{ $members }} --}}
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-info shadow text-center border-radius-md">
-                                    <i class="fas fa-users text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Pendaftaran Belum Diverifikasi
-                                    </p>
-                                    <h5 class="font-weight-bolder mb-0">
-                                        {{-- {{ $membersUnverified }} --}}
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-info shadow text-center border-radius-md">
-                                    <i class="fas fa-check-double text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Pendaftaran Sudah Diverifikasi
-                                    </p>
-                                    <h5 class="font-weight-bolder mb-0">
-                                        {{-- {{ $membersVerified }} --}}
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-info shadow text-center border-radius-md">
-                                    <i class="fas fa-user-check text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{-- <div class="row mt-4">
+
+            {{-- <div class="row mt-4">
     <div class="col-lg-7 mb-lg-0 mb-4">
       <div class="card">
         <div class="card-body p-3">
@@ -144,7 +79,7 @@
       </div>
     </div>
   </div> --}}
-        {{-- <div class="row mt-4">
+            {{-- <div class="row mt-4">
             <div class="col-lg-5 mb-lg-0 mb-4">
                 <div class="card z-index-2">
                     <div class="card-body p-3">
@@ -218,111 +153,111 @@
                 </div>
             </div>
         </div> --}}
-        @include('Layouts.admin.footer')
-    </div>
-@endsection
+            @include('Layouts.admin.footer')
+        </div>
+    @endsection
 
-@section('scripts')
-    <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
-    <script>
-        var ctx2 = document.getElementById("chart-line").getContext("2d");
+    @section('scripts')
+        <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
+        <script>
+            var ctx2 = document.getElementById("chart-line").getContext("2d");
 
-        var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
+            var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
 
-        gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
-        gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-        gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+            gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
+            gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+            gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
 
-        var gradientStroke2 = ctx2.createLinearGradient(0, 230, 0, 50);
+            var gradientStroke2 = ctx2.createLinearGradient(0, 230, 0, 50);
 
-        gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
-        gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-        gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
-        var count = [];
-        data.forEach(function(item, index) {
-            count.push(item.count)
-        });
+            gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
+            gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+            gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+            var count = [];
+            data.forEach(function(item, index) {
+                count.push(item.count)
+            });
 
-        new Chart(ctx2, {
-            type: "line",
-            data: {
-                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                datasets: [{
-                    label: "Pendaftaran Layanan",
-                    tension: 0.4,
-                    borderWidth: 0,
-                    pointRadius: 0,
-                    borderColor: "#cb0c9f",
-                    borderWidth: 3,
-                    backgroundColor: gradientStroke1,
-                    fill: true,
-                    data: count,
-                    maxBarThickness: 6
-                }, ],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false,
-                    }
+            new Chart(ctx2, {
+                type: "line",
+                data: {
+                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    datasets: [{
+                        label: "Pendaftaran Layanan",
+                        tension: 0.4,
+                        borderWidth: 0,
+                        pointRadius: 0,
+                        borderColor: "#cb0c9f",
+                        borderWidth: 3,
+                        backgroundColor: gradientStroke1,
+                        fill: true,
+                        data: count,
+                        maxBarThickness: 6
+                    }, ],
                 },
-                interaction: {
-                    intersect: false,
-                    mode: 'index',
-                },
-                scales: {
-                    y: {
-                        grid: {
-                            drawBorder: false,
-                            display: true,
-                            drawOnChartArea: true,
-                            drawTicks: false,
-                            borderDash: [5, 5]
-                        },
-                        ticks: {
-                            display: true,
-                            padding: 10,
-                            color: '#b2b9bf',
-                            font: {
-                                size: 11,
-                                family: "Open Sans",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                        }
-                    },
-                    x: {
-                        grid: {
-                            drawBorder: false,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
                             display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false,
-                            borderDash: [5, 5]
-                        },
-                        ticks: {
-                            display: true,
-                            color: '#b2b9bf',
-                            padding: 20,
-                            font: {
-                                size: 11,
-                                family: "Open Sans",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
                         }
                     },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index',
+                    },
+                    scales: {
+                        y: {
+                            grid: {
+                                drawBorder: false,
+                                display: true,
+                                drawOnChartArea: true,
+                                drawTicks: false,
+                                borderDash: [5, 5]
+                            },
+                            ticks: {
+                                display: true,
+                                padding: 10,
+                                color: '#b2b9bf',
+                                font: {
+                                    size: 11,
+                                    family: "Open Sans",
+                                    style: 'normal',
+                                    lineHeight: 2
+                                },
+                            }
+                        },
+                        x: {
+                            grid: {
+                                drawBorder: false,
+                                display: false,
+                                drawOnChartArea: false,
+                                drawTicks: false,
+                                borderDash: [5, 5]
+                            },
+                            ticks: {
+                                display: true,
+                                color: '#b2b9bf',
+                                padding: 20,
+                                font: {
+                                    size: 11,
+                                    family: "Open Sans",
+                                    style: 'normal',
+                                    lineHeight: 2
+                                },
+                            }
+                        },
+                    },
                 },
-            },
-        });
+            });
 
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
+            var win = navigator.platform.indexOf('Win') > -1;
+            if (win && document.querySelector('#sidenav-scrollbar')) {
+                var options = {
+                    damping: '0.5'
+                }
+                Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
             }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-    </script>
-@endsection
+        </script>
+    @endsection
