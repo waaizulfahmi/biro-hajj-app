@@ -211,7 +211,9 @@ class HajjController extends Controller
         $airline = escapeshellarg($request->filled('airline') ? $request->airline : '');
         $category = escapeshellarg($request->filled('category') ? $request->category : '');
 
-        $command = "python C:\Users\HP\Documents\PROJECTS\lomba\biro-hajj-app\app\Http\Controllers\ml\main.py $price $rating $duration $country $airline $category";
+        $pythonScriptPath = base_path('app/Http/Controllers/ml/main.py');
+
+        $command = "python $pythonScriptPath $price $rating $duration $country $airline $category";
         $output = shell_exec($command);
 
         // dd($duration, $price);

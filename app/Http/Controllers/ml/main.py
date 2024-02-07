@@ -1,6 +1,7 @@
 # from flask import Flask, render_template, request
 
 # print('hallo')
+import os
 import sys
 import pickle
 import sklearn
@@ -17,10 +18,21 @@ def hello_world():
     return 'Hello, World!'
 
 # # filename = 'Apps_Classification.pkl'
-classifier = pickle.load(open(
-    'C:/Users/HP/Documents/PROJECTS/lomba/biro-hajj-app/app/Http/Controllers/ml/Decision_tree_model.pkl', 'rb'))
-cv = pickle.load(open(
-    'C:/Users/HP/Documents/PROJECTS/lomba/biro-hajj-app/app/Http/Controllers/ml/tfidf_vectorizer_baru.pkl', 'rb'))
+
+base_path = os.path.dirname(os.path.abspath(__file__))
+
+model_path = os.path.join(base_path, 'Decision_tree_model.pkl')
+vectorizer_path = os.path.join(base_path, 'tfidf_vectorizer_baru.pkl')
+
+classifier = pickle.load(open(model_path, 'rb'))
+cv = pickle.load(open(vectorizer_path, 'rb'))
+
+# print(base_path)
+
+# classifier = pickle.load(open(
+#     'C:/Users/HP/Documents/PROJECTS/lomba/biro-hajj-app/app/Http/Controllers/ml/Decision_tree_model.pkl', 'rb'))
+# cv = pickle.load(open(
+#     'C:/Users/HP/Documents/PROJECTS/lomba/biro-hajj-app/app/Http/Controllers/ml/tfidf_vectorizer_baru.pkl', 'rb'))
 # # app = Flask(name)
 
 # print(cv)

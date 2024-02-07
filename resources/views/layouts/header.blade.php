@@ -27,10 +27,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="#features" class="nav-link">Features</a>
+                            <a href="#currency" class="nav-link">Currency</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#pricing" class="nav-link">Pricing</a>
+                            <a href="#search-and-filter" class="nav-link">Search</a>
                         </li>
                         <li class="nav-item">
                             <a href="#testimonials" class="nav-link">Testimonials</a>
