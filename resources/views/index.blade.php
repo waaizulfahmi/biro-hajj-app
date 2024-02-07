@@ -195,19 +195,42 @@
 
             <!-- Filters -->
             <div class="flex items-center justify-between w-full mb-8">
-                <form action="{{ route('hajj.search') }}" method="GET">
+                <form action="{{ route('search') }}" method="POST">
+                    @csrf
                     <!-- Price -->
-                    <input type="text" placeholder="Price" class=" p-2 border border-gray-300 rounded-md mr-2">
 
+                    <label for="category" class="mb-2 text-sm">Choose Type:</label>
+                    <select id="category" name="category" class="p-2 border border-gray-300 rounded-md mb-2">
+                        <option value="Umrah">Umrah</option>
+                        <option value="Haji">Haji</option>
+                        <option value="Haji Plus">Haji Plus</option>
+                    </select>
 
-                    <input type="text" placeholder="Rating" class="p-2 border border-gray-300 rounded-md mr-2">
+                    <label for="airline" class="mb-2 text-sm">Choose Airline:</label>
+                    <select id="airline" name="airline" class="p-2 border border-gray-300 rounded-md mb-2">
+                        <option value="Saudia Airlines">Saudia Airlines</option>
+                        <option value="Etihad Airways">Etihad Airways</option>
+                        <option value="Malaysia Airlines">Malaysia Airlines</option>
+                        <option value="Garuda Indonesia">Garuda Indonesia</option>
+                        <option value="Air Asia">Air Asia</option>
+                        <option value="Qatar Airlines">Qatar Airlines</option>
+                        <option value="Air Arabia">Air Arabia</option>
+                        <option value="Batik Air">Batik Air</option>
+                    </select>
 
-                    <input type="number" placeholder="Duration in Day"
+                    <input type="text" placeholder="Price" name='price' id='price'
+                        class=" p-2 border border-gray-300 rounded-md mr-2">
+
+                    <input type="text" placeholder="Rating" name='rating' id='rating'
                         class="p-2 border border-gray-300 rounded-md mr-2">
 
-                    <input type="text" placeholder="Country" class="p-2 border border-gray-300 rounded-md mr-2">
+                    <input type="number" placeholder="Duration in Day" name='duration' id='duration'
+                        class="p-2 border border-gray-300 rounded-md mr-2">
 
-                    <button class="px-4 py-2 bg-indigo-500 text-white rounded-md">
+                    <input type="text" placeholder="Country" name='country' id='country'
+                        class="p-2 border border-gray-300 rounded-md mr-2">
+
+                    <button class="px-4 py-2 bg-indigo-500 text-white rounded-md" type="submit">
                         <i class="fas fa-search mr-2"></i>Search
                     </button>
                 </form>

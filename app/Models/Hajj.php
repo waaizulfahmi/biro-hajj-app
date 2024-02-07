@@ -12,6 +12,6 @@ class Hajj extends Model
     protected $table = 'tb_hajj';
 
     protected $fillable = [
-        'name', 'location', 'price', 'rating', 'description', 'image',
+        'name', 'location', 'airline','category', 'price', 'rating', 'description', 'link', 'duration','image',
     ];
 }

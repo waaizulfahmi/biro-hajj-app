@@ -44,6 +44,7 @@ class HajjController extends Controller
             'price' => 'required|string|max:255',
             'rating' => 'required|numeric',
             'description' => 'required|string',
+            'link' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -56,6 +57,7 @@ class HajjController extends Controller
             'location' => $request->input('location'),
             'price' => $request->input('price'),
             'rating' => $request->input('rating'),
+            'link' => $request->input('link'),
             'description' => $request->input('description'),
             'image' => $imagePath,
         ]);
@@ -110,9 +112,13 @@ class HajjController extends Controller
 
         // Validasi form input sesuai kebutuhan
         $request->validate([
-            'name' => 'required',
-            'location' => 'required',
-            'rating' => 'required|numeric|min:1|max:5',
+            'name' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'price' => 'required|string|max:255',
+            'rating' => 'required|numeric',
+            'description' => 'required|string',
+            'link' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             // Sesuaikan dengan kolom-kolom lainnya
         ]);
 
@@ -120,7 +126,11 @@ class HajjController extends Controller
         $hajj->update([
             'name' => $request->input('name'),
             'location' => $request->input('location'),
+            'price' => $request->input('price'),
             'rating' => $request->input('rating'),
+            'description' => $request->input('description'),
+            'link' => $request->input('link'),
+            'image' => $request->input('image'),
             // Sesuaikan dengan kolom-kolom lainnya
         ]);
 
@@ -174,27 +184,28 @@ class HajjController extends Controller
 
     public function search(Request $request)
     {
-        $query = Hajj::query();
+        $hajjData = Hajj::all();
 
-        if ($request->filled('price')) {
-            $query->where('price', $request->price);
-        }
+        $country = $request->all();
 
-        if ($request->filled('rating')) {
-            $query->where('rating', $request->rating);
-        }
+        $price = escapeshellarg($request->filled('price') ? $request->price : '');
+        $rating = escapeshellarg($request->filled('rating') ? $request->rating : '');
+        $duration = escapeshellarg($request->filled('duration') ? $request->duration : '');
+        $country = escapeshellarg($request->filled('country') ? $request->country : '');
+        $airline = escapeshellarg($request->filled('airline') ? $request->airline : '');
+        $category = escapeshellarg($request->filled('category') ? $request->category : '');
 
-        if ($request->filled('duration')) {
-            $query->where('duration', $request->duration);
-        }
+        $command = "python C:\Users\HP\Documents\PROJECTS\lomba\biro-hajj-app\app\Http\Controllers\ml\main.py $price $rating $duration $country $airline $category";
+        $output = shell_exec($command);
 
-        if ($request->filled('country')) {
-            $query->where('country', $request->country);
-        }
+        // dd($duration, $price);
+        dd($output);
 
-        $results = $query->get();
+        $results = json_decode($output, true);
 
-        return view('index', compact('results'));
+
+
+        return view('index', compact('results','hajjData'));
     }
 
 }

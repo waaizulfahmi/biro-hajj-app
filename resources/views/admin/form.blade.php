@@ -62,6 +62,26 @@
             </div>
 
             <div class="form-group">
+                <label for="duration">Duration</label>
+                <textarea name="duration" id="duration" rows="3" class="form-control @error('duration') is-invalid @enderror">{{ old('duration', $hajj->duration ?? '') }}</textarea>
+                @error('duration')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="link">Link</label>
+                <textarea name="link" id="link" rows="3" class="form-control @error('link') is-invalid @enderror">{{ old('link', $hajj->link ?? '') }}</textarea>
+                @error('link')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <div class="form-group">
                 <label for="image">Gambar</label>
                 <input type="file" name="image" id="image"
                     class="form-control @error('image') is-invalid @enderror">
