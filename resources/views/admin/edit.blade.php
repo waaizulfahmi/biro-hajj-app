@@ -11,11 +11,11 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <div class="d-flex justify-content-between">
-                            <h6>Edit Data Biro</h6>
+                            <h6>Edit Agent Data</h6>
                             <div>
                                 <a href="{{ route('hajj.page') }}"
                                     class="btn btn-sm bg-gradient-primary font-weight-bold text-xs">
-                                    Kembali
+                                    Back
                                 </a>
                             </div>
                         </div>

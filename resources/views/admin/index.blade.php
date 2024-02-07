@@ -12,7 +12,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <div class="d-flex justify-content-between">
-                            <h6>Data Biro</h6>
+                            <h6>Agent Data </h6>
                             {{-- @dd($candidate) --}}
                             {{-- create button --}}
                             <div>
@@ -22,7 +22,7 @@
               </a> --}}
                                 <a href="{{ route('hajj.create') }}"
                                     class="btn btn-sm bg-gradient-success font-weight-bold text-xs">
-                                    Tambah Data
+                                    Add Data
                                 </a>
                             </div>
                         </div>
@@ -36,16 +36,16 @@
                                             No
                                         </th>
                                         <th class="text-uppercase text-secondary text-xs font-weight-bolder">
-                                            Nama Biro</th>
+                                            Name</th>
                                         <th class="text-uppercase text-secondary text-xs font-weight-bolder">
-                                            Harga</th>
+                                            Price</th>
                                         <th class="text-uppercase text-secondary text-xs font-weight-bolder">
-                                            Lokasi
+                                            Location
                                         </th>
                                         <th class="text-uppercase text-secondary text-xs font-weight-bolder">
-                                            Rating</th>
+                                            Hotel Rating</th>
                                         <th class="text-uppercase text-secondary text-xs font-weight-bolder">
-                                            Aksi</th>
+                                            Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

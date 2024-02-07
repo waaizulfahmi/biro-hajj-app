@@ -65,9 +65,6 @@
             </li> --}}
 
             {{-- ADMINISTRATOR --}}
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Halaman Administrator</h6>
-            </li>
             <li class="nav-item">
                 <a class="nav-link @if ($page === 'hajj') active @endif" href="{{ route('hajj.page') }}">
                     <div
@@ -75,7 +72,7 @@
                         <i class="fas fa-mosque @if ($page !== 'hajj') text-dark @endif"
                             aria-hidden="true"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Data Biro Haji</span>
+                    <span class="nav-link-text ms-1">Hajj Agent Data</span>
                 </a>
             </li>
             {{-- <li class="nav-item">

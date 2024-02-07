@@ -9,8 +9,8 @@
                     <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-50">
                         <div class="card card-plain mt-8">
                             <div class="card-header pb-0 text-left bg-transparent">
-                                <h3 class="font-weight-bolder text-info text-gradient">Login Akun</h3>
-                                <p class="mb-0">Masukan Email dan Password Anda</p>
+                                <h3 class="font-weight-bolder text-info text-gradient">Account Login</h3>
+                                <p class="mb-0">Insert your username and password</p>
                             </div>
                             <div class="card-body">
                                 <form role="form" action="{{ route('post.login') }}" method="post">
@@ -62,6 +62,9 @@
                             <h3 class="primary-color">Welcome</h3>
                             <p class="lead mb-6">
                                 Admin in Login Dashboard Admin
+                            </p>
+                            <p class="text-muted">
+                                Please enter your credentials to access the dashboard features and manage your system.
                             </p>
                         </div>
                     </div>
