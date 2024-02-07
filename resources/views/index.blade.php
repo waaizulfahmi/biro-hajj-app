@@ -14,7 +14,7 @@
                 <p class="pr-0 mb-8 text-base text-gray-600 sm:text-lg xl:text-xl lg:pr-20">Are you ready to embark on your
                     journey and start building the next greatest platform for finding the most trustworthy Hajj travel
                     agencies in the market?</p>
-                <a href="#_"
+                <a href="#search-and-filter"
                     class="relative self-start inline-block w-auto px-8 py-4 mx-auto mt-0 text-base font-bold text-white bg-indigo-600 border-t border-gray-200 rounded-md shadow-xl sm:mt-1 fold-bold lg:mx-0">Search
                     Now !</a>
                 <!-- Integrates with section -->
@@ -185,68 +185,91 @@
     <div id="search-and-filter"
         class="relative w-full px-8 py-10 border-t border-gray-200 md:py-16 lg:py-24 xl:py-40 xl:px-0">
         <div class="container flex flex-col items-center justify-between h-full max-w-6xl mx-auto">
-            <h2 class="my-5 text-base font-medium tracking-tight text-indigo-500 uppercase">Search </h2>
-
-            <!-- Search Bar -->
-            {{-- <div class="flex items-center justify-center w-full mb-8">
-                <input type="text" placeholder="Search..." class="w-full p-2 border border-gray-300 rounded-md">
-                <button class="ml-2 px-4 py-2 bg-indigo-500 text-white rounded-md">Search</button>
-            </div> --}}
+            <h2 class="my-5 text-base font-medium tracking-tight text-indigo-500 uppercase">Search</h2>
 
             <!-- Filters -->
-            <div class="flex items-center justify-between w-full mb-8">
-                <form action="{{ route('search') }}" method="POST">
+            <div class="flex flex-col items-center justify-between w-full mb-8">
+                <form action="{{ route('search') }}" method="POST" class="flex flex-col w-full">
                     @csrf
+
+                    <!-- Category -->
+                    <div class="mb-4">
+                        <label for="category" class="text-sm">Choose Type:</label>
+                        <select id="category" name="category" class="p-2 border border-gray-300 rounded-md w-full">
+                            <option value="Umrah">Umrah</option>
+                            <option value="Haji">Haji</option>
+                            <option value="Haji Plus">Haji Plus</option>
+                        </select>
+                    </div>
+
+                    <!-- Airline -->
+                    <div class="mb-4">
+                        <label for="airline" class="text-sm">Choose Airline:</label>
+                        <select id="airline" name="airline" class="p-2 border border-gray-300 rounded-md w-full">
+                            <option value="Saudia Airlines">Saudia Airlines</option>
+                            <option value="Etihad Airways">Etihad Airways</option>
+                            <option value="Malaysia Airlines">Malaysia Airlines</option>
+                            <option value="Garuda Indonesia">Garuda Indonesia</option>
+                            <option value="Air Asia">Air Asia</option>
+                            <option value="Qatar Airlines">Qatar Airlines</option>
+                            <option value="Air Arabia">Air Arabia</option>
+                            <option value="Batik Air">Batik Air</option>
+                        </select>
+                    </div>
+
                     <!-- Price -->
+                    <div class="mb-4">
+                        <label for="price" class="text-sm">Price</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Rp.</span>
+                            </div>
+                            <input type="number" placeholder="Price" name="price" id="price"
+                                class="p-2 border border-gray-300 rounded-md w-full form-control" required>
+                        </div>
+                    </div>
 
-                    <label for="category" class="mb-2 text-sm">Choose Type:</label>
-                    <select id="category" name="category" class="p-2 border border-gray-300 rounded-md mb-2">
-                        <option value="Umrah">Umrah</option>
-                        <option value="Haji">Haji</option>
-                        <option value="Haji Plus">Haji Plus</option>
-                    </select>
 
-                    <label for="airline" class="mb-2 text-sm">Choose Airline:</label>
-                    <select id="airline" name="airline" class="p-2 border border-gray-300 rounded-md mb-2">
-                        <option value="Saudia Airlines">Saudia Airlines</option>
-                        <option value="Etihad Airways">Etihad Airways</option>
-                        <option value="Malaysia Airlines">Malaysia Airlines</option>
-                        <option value="Garuda Indonesia">Garuda Indonesia</option>
-                        <option value="Air Asia">Air Asia</option>
-                        <option value="Qatar Airlines">Qatar Airlines</option>
-                        <option value="Air Arabia">Air Arabia</option>
-                        <option value="Batik Air">Batik Air</option>
-                    </select>
+                    <!-- Rating -->
+                    <div class="mb-4">
+                        <label for="rating" class="text-sm">Rating</label>
+                        <input type="number" placeholder="Rating" name="rating" id="rating"
+                            class="p-2 border border-gray-300 rounded-md w-full" min="1" max="5" required>
+                    </div>
 
-                    <input type="text" placeholder="Price" name='price' id='price'
-                        class=" p-2 border border-gray-300 rounded-md mr-2">
+                    <!-- Duration -->
+                    <div class="mb-4">
+                        <label for="duration" class="text-sm">Duration</label>
+                        <input type="number" placeholder="Duration in Day" name="duration" id="duration"
+                            class="p-2 border border-gray-300 rounded-md w-full" required>
+                    </div>
 
-                    <input type="text" placeholder="Rating" name='rating' id='rating'
-                        class="p-2 border border-gray-300 rounded-md mr-2">
-
-                    <input type="number" placeholder="Duration in Day" name='duration' id='duration'
-                        class="p-2 border border-gray-300 rounded-md mr-2">
-
-                    <input type="text" placeholder="Country" name='country' id='country'
-                        class="p-2 border border-gray-300 rounded-md mr-2">
+                    <!-- Country -->
+                    <div class="mb-4">
+                        <label for="country" class="text-sm">Country</label>
+                        <select id="country" name="country" class="p-2 border border-gray-300 rounded-md w-full">
+                            <option value="Indonesia">Indonesia</option>
+                            <option value="Malaysia">Malaysia</option>
+                        </select>
+                    </div>
 
                     <button class="px-4 py-2 bg-indigo-500 text-white rounded-md" type="submit">
                         <i class="fas fa-search mr-2"></i>Search
                     </button>
                 </form>
-
             </div>
 
 
 
 
+
             <div class="flex flex-col w-full mt-0 lg:flex-row sm:mt-10 lg:mt-20">
-                <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-                    @foreach ($hajjData as $data)
+                <div class="grid grid-cols-3 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+                    {{-- @foreach ($results as $data)
                         <div class="max-w-md p-4 mx-auto mb-8 flex-1" style="width: 250px; height: 400px;">
                             <!-- Umrah Travel Agency Card -->
                             <div class="bg-white rounded-lg shadow-lg overflow-hidden h-full">
-                                <img src="{{ asset('storage/' . $data->image) }}" alt="{{ $data->name }}"
+                                <img src="{{ asset('storage/' . $data->image ?? ' ') }}" alt="{{ $data->name }}"
                                     class="w-full h-40 object-cover">
                                 <div class="p-4">
                                     <h4 class="text-xl font-semibold mb-2">{{ $data->name }}</h4>
@@ -289,7 +312,68 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    @endforeach --}}
+                    {{-- @dd($results->link) --}}
+                    @if ($results)
+                        <div class="max-w-md p-4 mx-auto mb-8 flex-1" style="width: 250px; height: 400px;">
+                            <div class="bg-white rounded-lg shadow-lg overflow-hidden h-full">
+                                <img src="{{ asset('storage/' . $results->image ?? ' ') }}" alt="{{ $results->name }}"
+                                    class="w-full h-40 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-xl font-semibold mb-2">{{ $results->name }}</h4>
+                                    <p class="text-gray-900 mb-2 font-semibold">
+                                        Rp. {{ number_format($results->price, 0, ',', '.') }}
+                                    </p>
+                                    <p class="text-gray-600 mb-2">
+                                        {{ implode(' ', array_slice(str_word_count($results->description, 2), 0, 10)) . (str_word_count($results->description, 2) > 10 ? '...' : '') }}
+                                    </p>
+                                    <a href="#" class="text-indigo-500 underline" data-toggle="modal"
+                                        data-target="#detailModal{{ $results->id }}">Lihat Detail</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="detailModal{{ $results->id }}" tabindex="-1" role="dialog"
+                            aria-labelledby="detailModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="detailModalLabel">{{ $results->name }} Details</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ asset('storage/' . $results->image) }}" alt="{{ $results->name }}"
+                                            class="w-full h-40 object-cover mb-3">
+                                        <p><strong>Location:</strong> {{ $results->location }}</p>
+                                        <p><strong>Rating:</strong>
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                <i
+                                                    class="fas fa-star {{ $i <= $results->rating ? 'text-warning' : 'text-secondary' }}"></i>
+                                            @endfor
+                                        </p>
+                                        <p><strong>Description:</strong> {{ $results->description }}</p>
+                                        <p>
+                                            <strong>Link Website:</strong>
+                                            <a href="{{ $results->link }}" target="_blank" rel="noopener noreferrer">
+                                                <button class="bg-blue-500 text-white px-4 py-2 rounded-md">
+                                                    <i class="fas fa-link mr-2"></i>Visit Website
+                                                </button>
+                                            </a>
+                                        </p>
+
+                                        <!-- Add more details as needed -->
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
 

@@ -15,6 +15,30 @@
             </div>
 
             <div class="form-group">
+                <label for="airline">Maskapai</label>
+                <input type="text" name="airline" id="airline"
+                    class="form-control @error('airline') is-invalid @enderror"
+                    value="{{ old('airline', $hajj->airline ?? '') }}">
+                @error('airline')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="category">Kategori</label>
+                <input type="text" name="category" id="category"
+                    class="form-control @error('category') is-invalid @enderror"
+                    value="{{ old('category', $hajj->category ?? '') }}">
+                @error('category')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <div class="form-group">
                 <label for="location">Lokasi</label>
                 <input type="text" name="location" id="location"
                     class="form-control @error('location') is-invalid @enderror"

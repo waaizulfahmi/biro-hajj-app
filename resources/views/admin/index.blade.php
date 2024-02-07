@@ -1,7 +1,7 @@
 @extends('Layouts.admin.app')
 
 @section('title')
-    Pendaftar
+    Daftar Biro Terdaftar
 @endsection
 
 @section('main')
@@ -60,7 +60,7 @@
                                             </td>
                                             <td>
                                                 <p class="text-sm font-weight-bold mb-0">
-                                                    Rp. {{ $hajj->price }}</p>
+                                                    Rp. {{ number_format($hajj->price, 0, ',', '.') }}</p>
                                             </td>
                                             <td>
                                                 <p class="text-sm font-weight-bold mb-0">

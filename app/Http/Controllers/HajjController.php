@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\cr;
 use App\Models\Hajj;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class HajjController extends Controller
 {
@@ -16,7 +18,8 @@ class HajjController extends Controller
     public function index()
     {
         $hajjData = Hajj::all();
-        return view('index', compact('hajjData'));
+        $results = null;
+        return view('index', compact('hajjData', 'results'));
     }
 
     /**
@@ -42,6 +45,8 @@ class HajjController extends Controller
             'name' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'price' => 'required|string|max:255',
+            'airline' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
             'rating' => 'required|numeric',
             'description' => 'required|string',
             'link' => 'required|string',
@@ -56,6 +61,8 @@ class HajjController extends Controller
             'name' => $request->input('name'),
             'location' => $request->input('location'),
             'price' => $request->input('price'),
+            'airline' => $request->input('airline'),
+            'category' => $request->input('category'),
             'rating' => $request->input('rating'),
             'link' => $request->input('link'),
             'description' => $request->input('description'),
@@ -130,9 +137,18 @@ class HajjController extends Controller
             'rating' => $request->input('rating'),
             'description' => $request->input('description'),
             'link' => $request->input('link'),
-            'image' => $request->input('image'),
             // Sesuaikan dengan kolom-kolom lainnya
         ]);
+
+        if ($request->hasFile('image')) {
+            if ($hajj->image) {
+                Storage::delete($hajj->image);
+            }
+
+            $imagePath = $request->file('image')->store('images', 'public');
+
+            $hajj->update(['image' => $imagePath]);
+        }
 
         return redirect()->route('hajj.page')->with('success', 'Data berhasil diperbarui!');
     }
@@ -199,10 +215,14 @@ class HajjController extends Controller
         $output = shell_exec($command);
 
         // dd($duration, $price);
-        dd($output);
 
-        $results = json_decode($output, true);
+        // $results = json_decode($output, true);
 
+
+        $results = Hajj::where('name', $output)->first();
+
+        // dd($results);
+        // $hajjData =
 
 
         return view('index', compact('results','hajjData'));

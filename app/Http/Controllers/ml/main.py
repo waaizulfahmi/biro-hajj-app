@@ -42,11 +42,11 @@ if all(param is not None for param in [url, price, rating, duration, airline, ca
     vect = cv.transform(data).toarray()
 
     # Make predictions using the loaded classifier
-    print("Number of features in input data:", vect.shape[1])
+    # print("Number of features in input data:", vect.shape[1])
     my_prediction = classifier.predict(vect)
 
     # Print the prediction result
-    print(f"Prediction: {my_prediction[0]}")
+    print(my_prediction[0].strip(), end='')
 else:
     print("Please provide all four parameters: URL, Price, Rating, Duration.")
 # url = sys.argv[1]
