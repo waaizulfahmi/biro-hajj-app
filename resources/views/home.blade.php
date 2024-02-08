@@ -1,4 +1,4 @@
-@extends('Layouts.admin.app')
+@extends('layouts.admin.app')
 
 @section('title')
     Dashboard
@@ -153,7 +153,7 @@
                 </div>
             </div>
         </div> --}}
-            @include('Layouts.admin.footer')
+            @include('layouts.admin.footer')
         </div>
     @endsection
 
