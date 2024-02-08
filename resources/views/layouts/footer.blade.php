@@ -1,7 +1,7 @@
 <footer class="px-4 pt-12 pb-8 text-white bg-white border-t border-gray-200">
     <div class="container flex flex-col justify-between max-w-6xl px-4 mx-auto overflow-hidden lg:flex-row">
         <div class="w-full pl-12 mr-4 text-left lg:w-1/4 sm:text-center sm:pl-0 lg:text-left">
-            <a href="/"
+            {{-- <a href="/"
                 class="flex justify-start block text-left sm:text-center lg:text-left sm:justify-center lg:justify-start">
                 <span class="flex items-start sm:items-center">
                     <svg class="w-auto h-6 text-gray-800 fill-current" viewBox="0 0 194 116"
@@ -14,8 +14,8 @@
                         </g>
                     </svg>
                 </span>
-            </a>
-            <p class="mt-6 mr-4 text-base text-gray-500">Crafting the next-level of user experience and engagement.
+            </a> --}}
+            <p class="mt-6 mr-4 text-base text-gray-500">Find your favorite partner in here !
             </p>
         </div>
         <div class="block w-full pl-10 mt-6 text-sm lg:w-3/4 sm:flex lg:mt-0">
@@ -74,8 +74,8 @@
             </div>
         </div>
     </div>
-    <div class="pt-4 pt-6 mt-10 text-center text-gray-500 border-t border-gray-100">© 2020 Landmark. All rights
-        reserved.</div>
+    {{-- <div class="pt-4 pt-6 mt-10 text-center text-gray-500 border-t border-gray-100">© 2020 Landmark. All rights
+        reserved.</div> --}}
 
 </footer>
 
