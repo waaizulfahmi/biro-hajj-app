@@ -352,6 +352,7 @@
                                                     class="fas fa-star {{ $i <= $results->rating ? 'text-warning' : 'text-secondary' }}"></i>
                                             @endfor
                                         </p>
+                                        <p><strong>Airline:</strong> {{ $results->airline }}</p>
                                         <p><strong>Description:</strong> {{ $results->description }}</p>
                                         <p>
                                             <strong>Link Website:</strong>
