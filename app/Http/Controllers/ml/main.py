@@ -9,13 +9,13 @@ import pickle
 # from sklearn.model_selection import train_test_split
 # from sklearn.naive_bayes import MultinomialNB
 # from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
-from flask import Flask
+# from flask import Flask
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
+# @app.route('/')
+# def hello_world():
+#     return 'Hello, World!'
 
 # # filename = 'Apps_Classification.pkl'
 
