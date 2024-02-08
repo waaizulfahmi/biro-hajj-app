@@ -219,7 +219,7 @@ class HajjController extends Controller
         putenv("PYTHONPATH=$scikitLearnPath");
 
         $commandVenv = "source $pythonVenvPath";
-        $outputVenv = shell_exec($commandVenv);
+        $outputVenv = shell_exec('which python');
 
         $command = "python3 $pythonScriptPath $price $rating $duration $country $airline $category";
         // $output = shell_exec($command);

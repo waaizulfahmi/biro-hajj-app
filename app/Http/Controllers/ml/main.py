@@ -3,6 +3,7 @@
 # print('hallo')
 import os
 import sys
+print(sys.version_info)
 import pickle
 import sklearn
 from sklearn.feature_extraction.text import CountVectorizer
