@@ -26,7 +26,7 @@ base_path = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(base_path, 'Decision_tree_model.pkl')
 vectorizer_path = os.path.join(base_path, 'tfidf_vectorizer_baru.pkl')
 
-classifier = pickle.load(open(model_path, 'rb'))
+# classifier = pickle.load(open(model_path, 'rb'))
 cv = pickle.load(open(vectorizer_path, 'rb'))
 
 # print(base_path)
