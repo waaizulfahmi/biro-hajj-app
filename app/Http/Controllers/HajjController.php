@@ -214,7 +214,8 @@ class HajjController extends Controller
         $pythonScriptPath = base_path('app/Http/Controllers/ml/main.py');
 
         $command = "python3 $pythonScriptPath $price $rating $duration $country $airline $category";
-        $output = shell_exec($command);
+        $output = exec($command);
+        // $output = shell_exec($command);
 
         // dd('path',$pythonScriptPath);
         // dd('command',$command);
