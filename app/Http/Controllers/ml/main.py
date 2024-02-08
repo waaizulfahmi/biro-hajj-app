@@ -5,10 +5,10 @@ import os
 import sys
 import pickle
 import sklearn
-# from sklearn.feature_extraction.text import CountVectorizer
-# from sklearn.model_selection import train_test_split
-# from sklearn.naive_bayes import MultinomialNB
-# from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 # from flask import Flask
 
 # app = Flask(__name__)
@@ -26,7 +26,7 @@ base_path = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(base_path, 'Decision_tree_model.pkl')
 vectorizer_path = os.path.join(base_path, 'tfidf_vectorizer_baru.pkl')
 
-# classifier = pickle.load(open(model_path, 'rb'))
+classifier = pickle.load(open(model_path, 'rb'))
 cv = pickle.load(open(vectorizer_path, 'rb'))
 
 # print(base_path)
