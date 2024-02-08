@@ -105,7 +105,7 @@
                                                     class="btn bg-gradient-danger font-weight-bold text-xs"
                                                     data-toggle="tooltip" data-original-title="Delete"
                                                     onclick="hapus({{ $hajj->id }})" id="hapus">
-                                                    <i class="fa fa-trash" aria-hidden="true"></i> Hapus
+                                                    <i class="fa fa-trash" aria-hidden="true"></i> Delete
                                                 </a>
 
                                             </td>
