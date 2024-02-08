@@ -323,10 +323,10 @@
                                         Rp. {{ number_format($results->price, 0, ',', '.') }}
                                     </p>
                                     <p class="text-gray-600 mb-2">
-                                        {{ implode(' ', array_slice(str_word_count($results->description, 2), 0, 10)) . (str_word_count($results->description, 2) > 10 ? '...' : '') }}
+                                        {{ implode(' ', array_slice(str_word_count($results->description, 2), 0, 5)) . (str_word_count($results->description, 2) > 5 ? '...' : '') }}
                                     </p>
                                     <a href="#" class="text-indigo-500 underline" data-toggle="modal"
-                                        data-target="#detailModal{{ $results->id }}">Lihat Detail</a>
+                                        data-target="#detailModal{{ $results->id }}">Show Detail</a>
                                 </div>
                             </div>
                         </div>
