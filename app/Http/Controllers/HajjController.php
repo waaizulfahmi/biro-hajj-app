@@ -223,7 +223,7 @@ class HajjController extends Controller
         // $output = shell_exec('python3 main.py');
         // dd('path',$pythonScriptPath);
         // dd('command',$command);
-        dd('command :', $command, 'outputVenv', $commandVenv, 'output', $output);
+        dd('command :', $command, 'outputVenv', $outputVenv, 'output', $output);
         // dd('output',$output);
 
         // dd($duration, $price);
