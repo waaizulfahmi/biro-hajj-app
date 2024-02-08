@@ -118,8 +118,6 @@
             </h2>
             <div class="flex flex-col items-center justify-center h-full mt-8">
                 <div class="flex items-center justify-between w-full mb-8">
-
-
                     <select id="fromCurrency" class="p-2 border border-gray-300 rounded-md">
                         <option value="USD">USD</option>
                         <option value="EUR">EUR</option>
