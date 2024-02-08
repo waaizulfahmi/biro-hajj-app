@@ -353,6 +353,7 @@
                                             @endfor
                                         </p>
                                         <p><strong>Airline:</strong> {{ $results->airline }}</p>
+                                        <p><strong>Duration:</strong> {{ $results->duration }}</p>
                                         <p><strong>Description:</strong> {{ $results->description }}</p>
                                         <p>
                                             <strong>Link Website:</strong>
