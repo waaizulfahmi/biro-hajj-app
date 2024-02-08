@@ -215,8 +215,8 @@ class HajjController extends Controller
 
         $command = "/usr/bin/python3 $pythonScriptPath $price $rating $duration $country $airline $category";
         // $output = shell_exec($command);
-        // $output = shell_exec($command);
-        $output = shell_exec('python3 -V');
+        $output = shell_exec($command);
+        // $output = shell_exec('python3 ');
         // dd('path',$pythonScriptPath);
         // dd('command',$command);
         dd('command :', $command, 'output', $output);
