@@ -214,6 +214,10 @@ class HajjController extends Controller
         $pythonScriptPath = base_path('app/Http/Controllers/ml/main.py 2>&1');
         $pythonVenvPath = base_path('app/Http/Controllers/ml/venv/bin/activate');
 
+        $scikitLearnPath = "/home/wandaaizulf/.local/lib/python3.8/site-packages";
+
+        putenv("PYTHONPATH=$scikitLearnPath");
+
         $commandVenv = "source $pythonVenvPath";
         $outputVenv = shell_exec($commandVenv);
 
