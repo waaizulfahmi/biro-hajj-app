@@ -211,12 +211,12 @@ class HajjController extends Controller
         $airline = escapeshellarg($request->filled('airline') ? $request->airline : '');
         $category = escapeshellarg($request->filled('category') ? $request->category : '');
 
-        $pythonScriptPath = base_path('app/Http/Controllers/ml/main.py');
+        $pythonScriptPath = base_path('app/Http/Controllers/ml/main.py 2>&1');
 
         $command = "python3 $pythonScriptPath $price $rating $duration $country $airline $category";
         // $output = shell_exec($command);
-        // $output = shell_exec($command);
-        $output = shell_exec('python3 main.py');
+        $output = shell_exec($command);
+        // $output = shell_exec('python3 main.py');
         // dd('path',$pythonScriptPath);
         // dd('command',$command);
         dd('command :', $command, 'output', $output);
