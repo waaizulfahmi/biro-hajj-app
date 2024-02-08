@@ -212,8 +212,9 @@ class HajjController extends Controller
         $category = escapeshellarg($request->filled('category') ? $request->category : '');
 
         $pythonScriptPath = base_path('app/Http/Controllers/ml/main.py 2>&1');
+        $pythonVenvPath = base_path('app/Http/Controllers/ml/venv/bin/activate 2>&1');
 
-        $command = "python3 $pythonScriptPath $price $rating $duration $country $airline $category";
+        $command = "source $pythonVenvPath  && python3 $pythonScriptPath $price $rating $duration $country $airline $category";
         // $output = shell_exec($command);
         $output = shell_exec($command);
         // $output = shell_exec('python3 main.py');
