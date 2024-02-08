@@ -14,7 +14,7 @@
 
     {{-- Nucleo Icons --}}
     <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />       
+    <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
     {{-- Font Awesome Icons --}}
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
@@ -46,12 +46,12 @@
 <body class="@if (auth()->guard('web')->check()) g-sidenav-show bg-gray-100 @endif">
     {{-- if logined include header --}}
     @if (auth()->guard('web')->check())
-        @include('Layouts.admin.sidebar')
+        @include('layouts.admin.sidebar')
         {{-- @include('Layouts.header') --}}
 
 
         <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
-            @include('Layouts.admin.navbar')
+            @include('layouts.admin.navbar')
         @else
             <main class="main-content mt-0">
     @endif
@@ -77,7 +77,7 @@
     </main>
 
     @guest
-        @include('Layouts.admin.footer')
+        @include('layouts.admin.footer')
     @endguest
 
     {{-- Core JS Files --}}
