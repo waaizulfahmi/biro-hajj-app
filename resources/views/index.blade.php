@@ -353,8 +353,8 @@
                                             @endfor
                                         </p>
                                         <p><strong>Airline:</strong> {{ $results->airline }}</p>
-                                        <p><strong>Duration:</strong> {{ $results->duration }}</p>
-                                        <p><strong>Description:</strong> {{ $results->description }}</p>
+                                        <p><strong>Duration:</strong> {{ $results->duration }} days</p>
+                                        <p><strong>Description:</strong> {{ $results->description }} </p>
                                         <p>
                                             <strong>Link Website:</strong>
                                             <a href="{{ $results->link }}" target="_blank" rel="noopener noreferrer">
